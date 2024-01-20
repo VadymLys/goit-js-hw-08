@@ -68,21 +68,23 @@ const images = [
 
 const gallery = document.querySelector(".gallery");
 let lightbox;
-gallery.addEventListener.apply("click", (e) => {
-  e.preventDefault();
-  if (e.target.classList.contains("gallery-image")) {
+gallery.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  if (event.target.classList.contains("gallery-image")) {
     const originalSrc = e.target.dataset.source;
     ligthbox = basicLightbox.create(
       `<img width="1400" height="900" src="${originalSrc}">`
     );
+    
     lightbox.show();
     document.addEventListener("keydown", handleKeyDown);
   }
 });
 
-function handleKeyDown(e) {
-  if (e.key === "Escape" || e.code === "Escape") {
-    closeLightbox()
+function handleKeyDown(event) {
+  if (event.key === "Escape" || event.code === "Escape") {
+    closeLightbox();
   };
   
 }
