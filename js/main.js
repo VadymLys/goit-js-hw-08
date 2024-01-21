@@ -73,7 +73,7 @@ gallery.addEventListener("click", (event) => {
 
   if (event.target.classList.contains("gallery-image")) {
     const originalSrc = event.target.dataset.source;
-    ligthbox = basicLightbox.create(
+    lightbox = basicLightbox.create(
       `<img width="1400" height="900" src="${originalSrc}">`
     );
     
