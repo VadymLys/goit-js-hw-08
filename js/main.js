@@ -72,7 +72,7 @@ gallery.addEventListener("click", (event) => {
   event.preventDefault();
 
   if (event.target.classList.contains("gallery-image")) {
-    const originalSrc = e.target.dataset.source;
+    const originalSrc = event.target.dataset.source;
     ligthbox = basicLightbox.create(
       `<img width="1400" height="900" src="${originalSrc}">`
     );
@@ -99,7 +99,7 @@ function closeLightbox() {
 const markup = images.map(
   ({original, description, preview}) => `<li class="gallery-item">
   <a class="gallery-link" href="${original}">
-  <img class = "gallery=image"
+  <img class = "gallery-image"
   src="${preview}"
   data-source="${original}"
   alt=${description}/>
