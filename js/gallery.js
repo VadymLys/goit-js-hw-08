@@ -74,13 +74,20 @@ gallery.addEventListener("click", (event) => {
   if (event.target.classList.contains("gallery-image")) {
     const originalSrc = event.target.dataset.source;
     lightbox = basicLightbox.create(
-      `<img width="1400" height="900" src="${originalSrc}">`
+      `<img width="1400" height="900" src="${originalSrc}">`,
+      {
+        closable: false,
+        onShow: (instance) => {
+          document.addEventListener("keydown", handleKeyDown);
+        }, onClose: (instance) => {
+          document.removeEventListener("keydown", handleKeyDown);
+      }}
     );
     
     lightbox.show();
-    document.addEventListener("keydown", handleKeyDown);
-  }
-});
+    }
+}
+);
 
 function handleKeyDown(event) {
   if (event.key === "Escape" || event.code === "Escape") {
@@ -102,7 +109,7 @@ const markup = images.map(
   <img class = "gallery-image"
   src="${preview}"
   data-source="${original}"
-  alt=${description}/>
+  alt="${description}"/>
   </a>
   </li>`
 ).join("");
