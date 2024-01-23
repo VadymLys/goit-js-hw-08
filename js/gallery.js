@@ -76,11 +76,11 @@ gallery.addEventListener("click", (event) => {
     lightbox = basicLightbox.create(
       `<img width="1400" height="900" src="${originalSrc}">`,
       {
-        closable: false,
-        onShow: (instance) => {
+        
+        onShow: () => {
           document.addEventListener("keydown", handleKeyDown);
-        }, onClose: (instance) => {
-          document.removeEventListener("keydown", handleKeyDown);
+        }, onClose: () => {
+        document.removeEventListener("keydown", handleKeyDown);
       }}
     );
     
